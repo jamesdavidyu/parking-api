@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(
   cors({
     // TODO: need to change to actual url when ready
-    origin: "http://localhost:3000",
+    origin: "http://localhost:8000",
     credentials: true,
   })
 );
@@ -36,4 +36,7 @@ mongoose.Promise = Promise;
 mongoose.connect(MONGO_URL);
 mongoose.connection.on("error", (error: Error) => console.log(error));
 
+app.get("/", (req, res) => {
+  res.status(200).json({ apiUrl: process.env.API_URL }).end();
+});
 app.use("/", router());
