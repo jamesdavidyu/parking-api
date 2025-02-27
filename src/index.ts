@@ -6,10 +6,14 @@ import compression from "compression";
 import cors from "cors";
 import mongoose from "mongoose";
 import router from "./router";
+import path from "path";
 
 require("dotenv").config();
 
 const app = express();
+
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 
 app.use(express.json());
 app.use(
@@ -37,6 +41,6 @@ mongoose.connect(MONGO_URL);
 mongoose.connection.on("error", (error: Error) => console.log(error));
 
 app.get("/", (req, res) => {
-  res.status(200).json({ apiUrl: process.env.API_URL }).end();
+  res.render("index", { apiUrl: process.env.API_URL });
 });
 app.use("/", router());
