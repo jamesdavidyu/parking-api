@@ -32,8 +32,10 @@ export const login = async (req: express.Request, res: express.Response) => {
     await user.save();
 
     res.cookie("PARKING-AUTH", user.authentication.sessionToken, {
-      domain: "localhost",
-      path: "/",
+      // TODO: figure out the configuration for this
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
     });
 
     return res.status(200).json(user).end();
