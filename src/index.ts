@@ -11,8 +11,11 @@ require("dotenv").config();
 
 const app = express();
 
+app.use(express.json());
 app.use(
   cors({
+    // TODO: need to change to actual url when ready
+    origin: "http://localhost:3000",
     credentials: true,
   })
 );
