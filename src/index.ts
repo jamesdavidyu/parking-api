@@ -12,6 +12,8 @@ require("dotenv").config();
 
 const app = express();
 
+app.use(express.static(path.join(__dirname, "./public")));
+
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
@@ -19,7 +21,7 @@ app.use(express.json());
 app.use(
   cors({
     // TODO: need to change to actual url when ready
-    origin: "http://localhost:8000",
+    origin: process.env.API_URL,
     credentials: true,
   })
 );
@@ -43,4 +45,8 @@ mongoose.connection.on("error", (error: Error) => console.log(error));
 app.get("/", (req, res) => {
   res.render("index", { apiUrl: process.env.API_URL });
 });
+app.get("/parking", (req, res) => {
+  res.render("parking", { apiUrl: process.env.API_URL });
+});
+
 app.use("/", router());

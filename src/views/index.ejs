@@ -14,40 +14,8 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.5/js.cookie.min.js"></script>
-    <script>
-      $(document).ready(() => {
-        $("#loginForm").submit((event) => {
-          event.preventDefault();
-
-          let formData = {
-            email: $("#email").val(),
-            password: $("#password").val(),
-          };
-
-          $.ajax({
-            type: "POST",
-            // TODO: remember to set this to cloud-hosted url
-            url: "http://localhost:8080/auth/login",
-            contentType: "application/json",
-            xhrFields: { withCredentials: true },
-            data: JSON.stringify(formData),
-            success: () => {
-              console.log("Success");
-            },
-            error: (error) => {
-              console.error("Error:", error);
-            },
-          });
-        });
-
-        $("#signUpTrigger").click(() => {
-          $("#signUpForm").removeClass("d-none");
-          $("#loginForm").addClass("d-none");
-        });
-      });
-    </script>
+    <div id="apiUrl" data-url="<%= apiUrl %>"></div>
+    <script src="/js/authentication.js"></script>
   </head>
   <body>
     <div
@@ -62,7 +30,7 @@
           placeholder="Password"
         />
         <button type="submit" id="loginButton" class="btn btn-primary">
-          Test
+          Log In
         </button>
       </form>
       <form id="signUpForm" class="d-none">Test</form>
