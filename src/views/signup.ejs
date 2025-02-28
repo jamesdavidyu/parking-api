@@ -25,24 +25,51 @@
         id="signUpForm"
         class="d-flex flex-column col-9 col-sm-6 col-md-5 col-lg-4 col-xl-3 gap-2"
       >
-        <input
-          type="email"
-          id="signupEmail"
-          name="signupEmail"
-          placeholder="Email"
-        />
-        <input
-          type="text"
-          id="username"
-          name="username"
-          placeholder="Username"
-        />
-        <input
-          type="password"
-          id="signupPassword"
-          name="signupPassword"
-          placeholder="Password"
-        />
+        <div class="d-flex flex-column">
+          <label id="signupEmailLabel" for="signupEmail" class="d-none">
+            Email
+          </label>
+          <input
+            type="email"
+            id="signupEmail"
+            name="signupEmail"
+            placeholder="Email"
+          />
+        </div>
+        <div class="d-flex flex-column">
+          <label id="usernameLabel" for="username" class="d-none">
+            Email
+          </label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Username"
+          />
+        </div>
+        <div class="d-flex">
+          <input
+            type="password"
+            id="signupPassword"
+            name="signupPassword"
+            placeholder="Password"
+            class="w-100"
+          />
+          <button
+            id="eye"
+            class="btn btn-outline-secondary btn-sm"
+            type="button"
+          >
+            <%- include("eye") %>
+          </button>
+          <button
+            id="eyeClosed"
+            class="btn btn-outline-secondary btn-sm d-none"
+            type="button"
+          >
+            <%- include("eyeclosed") %>
+          </button>
+        </div>
         <button type="submit" id="signupButton" class="btn btn-warning">
           Sign Up
         </button>

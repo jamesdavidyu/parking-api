@@ -11,6 +11,23 @@ $(document).ready(function () {
     error: function () {},
   });
 
+  $("#signupEmail").on("input", function () {
+    $("#signupEmailLabel").removeClass("d-none");
+    $("#signupEmail").attr("placeholder", "name@example.com");
+  });
+
+  $("#eye").click(function () {
+    $("#eye").addClass("d-none");
+    $("#eyeClosed").removeClass("d-none");
+    $("#signupPassword").attr("type", "text");
+  });
+
+  $("#eyeClosed").click(function () {
+    $("#eyeClosed").addClass("d-none");
+    $("#eye").removeClass("d-none");
+    $("#signupPassword").attr("type", "password");
+  });
+
   $("#signUpForm").submit(function (event) {
     event.preventDefault();
 
