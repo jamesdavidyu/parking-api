@@ -40,7 +40,6 @@ export const login = async (req: express.Request, res: express.Response) => {
       httpOnly: true,
       secure: true,
       sameSite: "none",
-      maxAge: Number(process.env.AGE),
     });
 
     return res.status(200).json(user).end();
