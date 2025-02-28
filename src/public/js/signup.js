@@ -16,6 +16,10 @@ $(document).ready(function () {
     $("#signupEmail").attr("placeholder", "name@example.com");
   });
 
+  $("#username").on("input", function () {
+    $("#usernameLabel").removeClass("d-none");
+  });
+
   $("#eye").click(function () {
     $("#eye").addClass("d-none");
     $("#eyeClosed").removeClass("d-none");
