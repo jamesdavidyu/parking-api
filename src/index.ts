@@ -48,5 +48,11 @@ app.get("/", (req, res) => {
 app.get("/parking", (req, res) => {
   res.render("parking", { apiUrl: process.env.API_URL });
 });
+app.get("/profile", (req, res) => {
+  res.render("profile", { apiUrl: process.env.API_URL });
+});
+app.get("/signup", (req, res) => {
+  res.render("signup", { apiUrl: process.env.API_URL });
+});
 
 app.use("/", router());

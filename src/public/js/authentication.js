@@ -1,12 +1,39 @@
-$(document).ready(() => {
+$(document).ready(function () {
   const apiUrl = $("#apiUrl").data("url");
 
-  $("#loginForm").submit((event) => {
+  $.ajax({
+    type: "GET",
+    url: apiUrl + "/auth/verify",
+    xhrFields: { withCredentials: true },
+    success: function () {
+      window.location.href = apiUrl + "/parking";
+    },
+    error: function () {},
+  });
+
+  $("#loginEmail").on("input", function () {
+    $("#loginEmailLabel").removeClass("d-none");
+    $("#loginEmail").attr("placeholder", "name@example.com");
+  });
+
+  $("#eye").click(function () {
+    $("#eye").addClass("d-none");
+    $("#eyeClosed").removeClass("d-none");
+    $("#loginPassword").attr("type", "text");
+  });
+
+  $("#eyeClosed").click(function () {
+    $("#eyeClosed").addClass("d-none");
+    $("#eye").removeClass("d-none");
+    $("#loginPassword").attr("type", "password");
+  });
+
+  $("#loginForm").submit(function (event) {
     event.preventDefault();
 
     let formData = {
-      email: $("#email").val(),
-      password: $("#password").val(),
+      email: $("#loginEmail").val(),
+      password: $("#loginPassword").val(),
     };
 
     $.ajax({
@@ -15,18 +42,12 @@ $(document).ready(() => {
       contentType: "application/json",
       xhrFields: { withCredentials: true },
       data: JSON.stringify(formData),
-      success: () => {
-        console.log("Success");
+      success: function () {
+        window.location.href = apiUrl + "/parking";
       },
-      error: (error) => {
+      error: function (error) {
         console.error("Error:", error);
       },
     });
-  });
-
-  $("#signUpTrigger").click(() => {
-    $("#signUpForm").removeClass("d-none");
-    $("#loginForm").addClass("d-none");
-    $("#signUpTrigger").addClass("d-none");
   });
 });

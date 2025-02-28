@@ -21,20 +21,48 @@
     <div
       class="d-flex flex-column vh-100 align-items-center justify-content-center gap-2"
     >
-      <form id="loginForm" class="d-flex flex-column w-25 gap-2">
-        <input type="email" id="email" name="email" placeholder="Email" />
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Password"
-        />
+      <form
+        id="loginForm"
+        class="d-flex flex-column col-9 col-sm-6 col-md-5 col-lg-4 col-xl-3 gap-2"
+      >
+        <div class="d-flex flex-column">
+          <label id="loginEmailLabel" for="loginEmail" class="d-none"
+            >Email</label
+          >
+          <input
+            type="email"
+            id="loginEmail"
+            name="loginEmail"
+            placeholder="Email"
+          />
+        </div>
+        <div class="d-flex">
+          <input
+            type="password"
+            id="loginPassword"
+            name="loginPassword"
+            placeholder="Password"
+            class="w-100"
+          />
+          <button id="eye" class="btn btn-outline-secondary btn-sm">
+            <%- include("eye") %>
+          </button>
+          <button
+            id="eyeClosed"
+            class="btn btn-outline-secondary btn-sm d-none"
+          >
+            <%- include("eyeclosed") %>
+          </button>
+        </div>
         <button type="submit" id="loginButton" class="btn btn-primary">
           Log In
         </button>
       </form>
-      <form id="signUpForm" class="d-none">Test</form>
-      <button id="signUpTrigger" class="btn btn-warning w-25">Sign Up</button>
+      <a href="/signup" class="col-9 col-sm-6 col-md-5 col-lg-4 col-xl-3">
+        <button id="signUpTrigger" class="btn btn-warning w-100">
+          Sign Up
+        </button>
+      </a>
     </div>
   </body>
 </html>
