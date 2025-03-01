@@ -5,8 +5,14 @@ $(document).ready(function () {
     type: "GET",
     url: apiUrl + "/auth/verify",
     xhrFields: { withCredentials: true },
-    success: function () {
-      // TODO: welcome message
+    success: function (response) {
+      // TODO: welcome message and check for reservation
+      if (response.reservations) {
+        if (response.reservations.car === "car1") {
+          $("#carButton1").addClass("d-none");
+          $("#reservedCar1").removeClass("d-none");
+        }
+      }
     },
     error: function (error) {
       window.location.href = apiUrl + "/";
@@ -31,10 +37,10 @@ $(document).ready(function () {
       xhrFields: { withCredentials: true },
       data: JSON.stringify(formData),
       success: function (response) {
-        console.log(response);
+        window.location.reload();
       },
       error: function (error) {
-        console.error(error);
+        console.error("Error:", error);
       },
     });
   });

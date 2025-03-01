@@ -49,6 +49,8 @@ export const createNewReservation = async (
       return res.sendStatus(400);
     }
 
+    // TODO: should still add a check that already reserved
+
     const newReservation = {
       car: car,
       from: from,

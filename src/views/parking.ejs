@@ -63,10 +63,14 @@
             class="border-0 bg-transparent"
             data-bs-toggle="modal"
             data-bs-target="#carModal1"
+            title="Car 1 is Empty"
           >
             <p><%- include("partials/emptycar") %></p>
           </button>
-          <p class="d-none"><%- include("partials/reservedcar") %></p>
+          <!-- TODO: need to figure out logic for showing editable reservation or other users' reservations (should just be disabled instead of updatable) -->
+          <p id="reservedCar1" class="d-none">
+            <%- include("partials/reservedcar") %>
+          </p>
           <button type="button" id="carButton2" class="border-0 bg-transparent">
             <p><%- include("partials/emptycar") %></p>
           </button>
