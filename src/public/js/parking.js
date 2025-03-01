@@ -13,6 +13,32 @@ $(document).ready(function () {
     },
   });
 
+  $("#carReserve1").submit(function (event) {
+    event.preventDefault();
+
+    let formData = {
+      car: "car1",
+      from: $("#fromPicker").val(),
+      to: $("#toPicker").val(),
+    };
+
+    console.log(formData);
+
+    $.ajax({
+      type: "POST",
+      url: apiUrl + "/reservations",
+      contentType: "application/json",
+      xhrFields: { withCredentials: true },
+      data: JSON.stringify(formData),
+      success: function (response) {
+        console.log(response);
+      },
+      error: function (error) {
+        console.error(error);
+      },
+    });
+  });
+
   $("#signOutButton").click(function (event) {
     event.preventDefault();
 
