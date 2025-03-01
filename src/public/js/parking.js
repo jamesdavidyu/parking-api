@@ -13,19 +13,6 @@ $(document).ready(function () {
     },
   });
 
-  $(function () {
-    new tempusDominus.TempusDominus(document.getElementById("datetimepicker"), {
-      display: {
-        icons: {
-          time: "bi bi-clock",
-          date: "bi bi-calendar",
-          up: "bi bi-arrow-up",
-          down: "bi bi-arrow-down",
-        },
-      },
-    });
-  });
-
   $("#signOutButton").click(function (event) {
     event.preventDefault();
 

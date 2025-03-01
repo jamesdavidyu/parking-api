@@ -15,6 +15,7 @@
       crossorigin="anonymous"
     ></script>
     <div id="apiUrl" data-url="<%= apiUrl %>"></div>
+    <div id="clock" data-icon="<%- include('partials/clock') %>"></div>
     <script src="/js/authentication.js"></script>
   </head>
   <body>
@@ -49,14 +50,14 @@
             class="btn btn-outline-secondary btn-sm"
             type="button"
           >
-            <%- include("eye") %>
+            <%- include("partials/eye") %>
           </button>
           <button
             id="eyeClosed"
             class="btn btn-outline-secondary btn-sm d-none"
             type="button"
           >
-            <%- include("eyeclosed") %>
+            <%- include("partials/eyeclosed") %>
           </button>
         </div>
         <button type="submit" id="loginButton" class="btn btn-primary">

@@ -14,69 +14,81 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus@6.9.4/dist/js/tempus-dominus.min.js"
-      crossorigin="anonymous"
-    ></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@eonasdan/tempus-dominus@6.9.4/dist/css/tempus-dominus.min.css"
-      crossorigin="anonymous"
-    />
     <div id="apiUrl" data-url="<%= apiUrl %>"></div>
     <script src="/js/parking.js"></script>
+    <style>
+      input[type="datetime-local"] {
+        border: 2px solid gray; /* Blue border */
+        border-radius: 8px; /* Rounded corners */
+        padding: 10px;
+        font-size: 16px;
+        color: gray;
+      }
+    </style>
   </head>
   <body>
     <div
       class="d-flex flex-column vh-100 align-items-center justify-content-center"
     >
-      <div class="d-flex flex-column w-25 input-group mb-4" id="datetimepicker">
-        <input type="text" class="w-100 form-control" id="datetime-input" />
-        <span class="input-group-text"> <%- include("calendar") %> </span>
+      <form class="d-flex flex-column mb-3 justify-content-center gap-2">
+        <div class="d-flex gap-2">
+          <div class="d-flex flex-column">
+            <label
+              for="fromPicker"
+              class="d-flex justify-content-center fw-bold"
+            >
+              FROM
+            </label>
+            <input id="fromPicker" type="datetime-local" />
+          </div>
+          <div>
+            <label for="toPicker" class="d-flex justify-content-center fw-bold">
+              TO
+            </label>
+            <input id="toPicker" type="datetime-local" />
+          </div>
+        </div>
+        <button type="submit" class="btn btn-secondary">
+          Check Reservations
+        </button>
+      </form>
+      <div class="d-flex gap-4">
+        <div class="d-flex gap-4">
+          <button type="button" id="carButton1" class="border-0 bg-transparent">
+            <p><%- include("partials/emptycar") %></p>
+          </button>
+          <button type="button" id="carButton2" class="border-0 bg-transparent">
+            <p><%- include("partials/emptycar") %></p>
+          </button>
+        </div>
+        <div class="d-flex gap-4">
+          <button type="button" id="carButton3" class="border-0 bg-transparent">
+            <p><%- include("partials/emptycar") %></p>
+          </button>
+          <button type="button" id="carButton4" class="border-0 bg-transparent">
+            <p><%- include("partials/emptycar") %></p>
+          </button>
+        </div>
       </div>
       <div class="d-flex gap-4">
         <div class="d-flex gap-4">
-          <button id="carButton1" class="border-0 bg-transparent">
-            <p><%- include("emptycar") %></p>
+          <button type="button" id="carButton5" class="border-0 bg-transparent">
+            <p><%- include("partials/emptycar") %></p>
           </button>
-          <button id="carButton2" class="border-0 bg-transparent">
-            <p><%- include("emptycar") %></p>
+          <button type="button" id="carButton6" class="border-0 bg-transparent">
+            <p><%- include("partials/emptycar") %></p>
           </button>
         </div>
         <div class="d-flex gap-4">
-          <button id="carButton3" class="border-0 bg-transparent">
-            <p><%- include("emptycar") %></p>
+          <button type="button" id="carButton7" class="border-0 bg-transparent">
+            <p><%- include("partials/emptycar") %></p>
           </button>
-          <button id="carButton4" class="border-0 bg-transparent">
-            <p><%- include("emptycar") %></p>
+          <button type="button" id="carButton8" class="border-0 bg-transparent">
+            <p><%- include("partials/emptycar") %></p>
           </button>
         </div>
       </div>
-      <div class="d-flex gap-4">
-        <div class="d-flex gap-4">
-          <button id="carButton5" class="border-0 bg-transparent">
-            <p><%- include("emptycar") %></p>
-          </button>
-          <button id="carButton6" class="border-0 bg-transparent">
-            <p><%- include("emptycar") %></p>
-          </button>
-        </div>
-        <div class="d-flex gap-4">
-          <button id="carButton7" class="border-0 bg-transparent">
-            <p><%- include("emptycar") %></p>
-          </button>
-          <button id="carButton8" class="border-0 bg-transparent">
-            <p><%- include("emptycar") %></p>
-          </button>
-        </div>
-      </div>
-      <button id="signOutButton" class="btn btn-danger col-2 mt-4">
-        Sign Out
-      </button>
+      <button id="signOutButton" class="btn btn-danger mt-1">Sign Out</button>
     </div>
   </body>
 </html>
