@@ -30,7 +30,10 @@
     <div
       class="d-flex flex-column vh-100 align-items-center justify-content-center"
     >
-      <form class="d-flex flex-column mb-3 justify-content-center gap-2">
+      <form
+        id="reservationChecker"
+        class="d-flex flex-column mb-3 justify-content-center gap-2"
+      >
         <div class="d-flex gap-2">
           <div class="d-flex flex-column">
             <label
@@ -63,16 +66,28 @@
             class="border-0 bg-transparent"
             data-bs-toggle="modal"
             data-bs-target="#carModal1"
-            title="Car 1 is Empty"
           >
-            <p><%- include("partials/emptycar") %></p>
+            <p id="emptyCar1" title="Car 1 is Empty">
+              <%- include("partials/emptycar") %>
+            </p>
+            <p id="reservedCar1" class="d-none" title="Car 1 is Reserved">
+              <%- include("partials/reservedcar") %>
+            </p>
           </button>
           <!-- TODO: need to figure out logic for showing editable reservation or other users' reservations (should just be disabled instead of updatable) -->
-          <p id="reservedCar1" class="d-none">
-            <%- include("partials/reservedcar") %>
-          </p>
-          <button type="button" id="carButton2" class="border-0 bg-transparent">
-            <p><%- include("partials/emptycar") %></p>
+          <button
+            type="button"
+            id="carButton2"
+            class="border-0 bg-transparent"
+            data-bs-toggle="modal"
+            data-bs-target="#carModal2"
+          >
+            <p id="emptyCar2" title="Car 2 is Empty">
+              <%- include("partials/emptycar") %>
+            </p>
+            <p id="reservedCar2" class="d-none" title="Car 2 is Reserved">
+              <%- include("partials/reservedcar") %>
+            </p>
           </button>
         </div>
         <div class="d-flex gap-4">
@@ -108,7 +123,7 @@
   <!-- MODALS FOR CARS -->
   <div
     id="carModal1"
-    class="modal fade mt-5"
+    class="modal fade"
     tabindex="-1"
     aria-labelledby="carModal1Label"
     aria-hidden="true"
@@ -122,26 +137,161 @@
           <div class="d-flex gap-2">
             <div class="d-flex flex-column">
               <label
-                for="fromPicker"
+                for="fromPicker1"
                 class="d-flex justify-content-center fw-bold"
               >
                 FROM
               </label>
-              <input id="fromPicker" name="fromPicker" type="datetime-local" />
+              <input
+                id="fromPicker1"
+                name="fromPicker1"
+                type="datetime-local"
+              />
             </div>
             <div>
               <label
-                for="toPicker"
+                for="toPicker1"
                 class="d-flex justify-content-center fw-bold"
               >
                 TO
               </label>
-              <input id="toPicker" name="toPicker" type="datetime-local" />
+              <input id="toPicker1" name="toPicker1" type="datetime-local" />
             </div>
           </div>
           <button type="submit" class="btn btn-dark">Reserve Car 1!</button>
         </form>
+        <form id="carReserved1" class="d-none pt-2 ps-3 pe-2">
+          You have reserved this car from
+        </form>
       </div>
     </div>
   </div>
+  <div
+    id="carModal2"
+    class="modal fade"
+    tabindex="-1"
+    aria-labelledby="carModal2Label"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content d-flex align-items-center pt-2">
+        <form
+          id="carReserve2"
+          class="d-flex flex-column mb-3 justify-content-center gap-2"
+        >
+          <div class="d-flex gap-2">
+            <div class="d-flex flex-column">
+              <label
+                for="fromPicker2"
+                class="d-flex justify-content-center fw-bold"
+              >
+                FROM
+              </label>
+              <input
+                id="fromPicker2"
+                name="fromPicker2"
+                type="datetime-local"
+              />
+            </div>
+            <div>
+              <label
+                for="toPicker2"
+                class="d-flex justify-content-center fw-bold"
+              >
+                TO
+              </label>
+              <input id="toPicker2" name="toPicker2" type="datetime-local" />
+            </div>
+          </div>
+          <button type="submit" class="btn btn-dark">Reserve Car 2!</button>
+        </form>
+        <form
+          id="carReserved2"
+          class="d-none pt-2 d-flex flex-column mb-3 justify-content-center gap-2"
+        >
+          <p id="updateReserve2" class="ps-3 pe-2">
+            You have reserved this car from
+          </p>
+          <div class="d-flex gap-2">
+            <div class="d-flex flex-column">
+              <label
+                for="fromPicker2"
+                class="d-flex justify-content-center fw-bold"
+              >
+                FROM
+              </label>
+              <input
+                id="fromPicker2"
+                name="fromPicker2"
+                type="datetime-local"
+              />
+            </div>
+            <div>
+              <label
+                for="toPicker2"
+                class="d-flex justify-content-center fw-bold"
+              >
+                TO
+              </label>
+              <input id="toPicker2" name="toPicker2" type="datetime-local" />
+            </div>
+          </div>
+          <button type="submit" class="btn btn-dark">Reserve Car 2!</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- <script>
+    for (i = 1; i < 8; i++) {
+      $div.text()
+      <div
+        id="carModal1"
+        class="modal fade"
+        tabindex="-1"
+        aria-labelledby="carModal1Label"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content d-flex align-items-center pt-2">
+            <form
+              id="carReserve1"
+              class="d-flex flex-column mb-3 justify-content-center gap-2"
+            >
+              <div class="d-flex gap-2">
+                <div class="d-flex flex-column">
+                  <label
+                    for="fromPicker1"
+                    class="d-flex justify-content-center fw-bold"
+                  >
+                    FROM
+                  </label>
+                  <input
+                    id="fromPicker1"
+                    name="fromPicker1"
+                    type="datetime-local"
+                  />
+                </div>
+                <div>
+                  <label
+                    for="toPicker1"
+                    class="d-flex justify-content-center fw-bold"
+                  >
+                    TO
+                  </label>
+                  <input
+                    id="toPicker1"
+                    name="toPicker1"
+                    type="datetime-local"
+                  />
+                </div>
+              </div>
+              <button type="submit" class="btn btn-dark">
+                Reserve Car!
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>;
+    }
+  </script> -->
 </html>
