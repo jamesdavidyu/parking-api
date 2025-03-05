@@ -1,1 +1,1 @@
-Please note: this project is still in progress. If you would like to see code for a complete app, please visit https://github.com/jamesdavidyu/grs. 
+Please note: this project is still in progress. If you would like to see code for a complete app, please visit https://github.com/jamesdavidyu/grs. For now, users may sign up for an account, log in and sign out, reserve cars 1 and 2, and see that the car has been reserved (as of 3/5/25).
