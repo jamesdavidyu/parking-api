@@ -1,6 +1,7 @@
 $(document).ready(function () {
   const apiUrl = $("#apiUrl").data("url");
 
+  // checking if user has valid sesisonToken, if so, redirects to main page
   $.ajax({
     type: "GET",
     url: apiUrl + "/auth/verify",

@@ -8,3 +8,4 @@ export const createReservation = (values: Record<string, any>) =>
   new ReservationModel(values)
     .save()
     .then((reservation) => reservation.toObject());
+// would add update and delete

@@ -6,6 +6,7 @@ $(document).ready(function () {
     url: apiUrl + "/auth/verify",
     xhrFields: { withCredentials: true },
     success: function (response) {
+      // checks for any reservations on login
       if (response.reservations) {
         for (let i = 1; i < 8; i++) {
           if (response.reservations.car === "car" + String(i)) {

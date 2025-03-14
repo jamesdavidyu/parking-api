@@ -1,5 +1,6 @@
 import { UserModel } from "../models/users";
 
+// starting off with basic CRUD controllers
 export const getUsers = () => UserModel.find();
 export const getUserByEmail = (email: string) => UserModel.findOne({ email });
 export const getUserBySessionToken = (sessionToken: string) =>

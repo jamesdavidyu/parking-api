@@ -48,6 +48,7 @@ $(document).ready(function () {
       xhrFields: { withCredentials: true },
       data: JSON.stringify(formData),
       success: function () {
+        // on successful sign up, automatically signs in
         $.ajax({
           type: "POST",
           url: apiUrl + "/auth/login",

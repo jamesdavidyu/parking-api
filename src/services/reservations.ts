@@ -18,6 +18,7 @@ export const getReservationsFromAndTo = async (
       return res.sendStatus(400);
     }
 
+    // appending list of from and get controllers
     const fromReservations = await getReservationsByFrom(new Date(from));
     const toReservations = await getReservationsByTo(new Date(to));
     return res.status(200).json([fromReservations, toReservations]);
@@ -63,6 +64,7 @@ export const createNewReservation = async (
       return res.sendStatus(400);
     }
 
+    // also updates user table
     existingUser.reservations = newReservation;
     await existingUser.save();
 

@@ -2,6 +2,7 @@ import express from "express";
 import { get, merge } from "lodash";
 import { getUserBySessionToken } from "../controllers/users";
 
+// making it easy to protect endpoints
 export const isOwner = async (
   req: express.Request,
   res: express.Response,
@@ -9,12 +10,13 @@ export const isOwner = async (
 ) => {
   try {
     const { id } = req.params;
-    const currentUserId = get(req, "identity._id") as string;
+    const currentUserId = get(req, "identity._id") as string; // comes from isAuthenticated below
 
     if (!currentUserId) {
       return res.sendStatus(403);
     }
 
+    // if id in endpoint param does not equal id from sessionToken - not owner, unauthorized
     if (currentUserId.toString() !== id) {
       return res.sendStatus(403);
     }
